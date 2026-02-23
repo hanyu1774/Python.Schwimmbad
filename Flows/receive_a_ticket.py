@@ -1,5 +1,8 @@
 class ReciveATicket:
-    def Run(cls, given_tickets, max_capacity) -> int:
+    def __init__(self) -> None:
+        pass
+
+    def Run(self, given_tickets, max_capacity) -> int:
        # is_max_capacity_value_zero_or_null = (max_capacity == 0) or (max_capacity is None)
        # is_given_tickets_value_zero_or_null = (given_tickets == 0) or (given_tickets is None)
        # was_capacity_reached = given_tickets <= max_capacity
