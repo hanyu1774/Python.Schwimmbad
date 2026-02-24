@@ -3,10 +3,7 @@ from Flows.receive_a_ticket import ReceiveATicket
 from Flows.helper_class import HelperClass
 from Models.public_swimming_pool import PublicSwimmingPool
 
-
 class Workflow:
-    def __init__(self) -> None:
-        pass
 
     def Run(self) -> None:
         pool = PublicSwimmingPool()
@@ -14,16 +11,15 @@ class Workflow:
         change_terminal_status = ChangeTerminalStatus()
 
         print(HelperClass.AnsiColorCodes.Green)
-        print('#' * 45)
-        print("   Willkommen am Ticketautomaten!")
-        print(f"   Maximale Kapazität: {pool.max_capacity} Besucher")
-        print('#' * 45)
+        print('#' * 50)
+        print("          Willkommen am Ticketautomaten!")
+        print(f"         Maximale Kapazität: {pool.max_capacity} Besucher")
+        print('#' * 50)
         print(HelperClass.AnsiColorCodes.Reset)
-        print()
 
         while pool.is_ticket_terminal_active:
             remaining = pool.max_capacity - pool.current_visitors
-            print(f"\nAktuell im Schwimmbad: {pool.current_visitors} / {pool.max_capacity}")
+            print(f"Aktuell im Schwimmbad: {pool.current_visitors} / {pool.max_capacity}")
             print(f"Noch verfügbare Plätze: {remaining}")
 
             desired: int = HelperClass.GetValidInput("Wie viele Tickets möchten Sie? ", int)
@@ -38,7 +34,7 @@ class Workflow:
             )
 
         print()
-        print('#' * 45)
-        print(f"{HelperClass.AnsiColorCodes.Red}Das Schwimmbad ist voll.{HelperClass.AnsiColorCodes.Reset}")
-        print(f"{HelperClass.AnsiColorCodes.Yellow}Der Ticketautomat wurde geschlossen.{HelperClass.AnsiColorCodes.Reset}")
-        print('#' * 45)
+        print(f"{HelperClass.AnsiColorCodes.Green}{'#' * 50}{HelperClass.AnsiColorCodes.Reset}")
+        print(f"{HelperClass.AnsiColorCodes.Red}            Das Schwimmbad ist voll.{HelperClass.AnsiColorCodes.Reset}")
+        print(f"{HelperClass.AnsiColorCodes.Green}        Der Ticketautomat wurde geschlossen.{HelperClass.AnsiColorCodes.Reset}")
+        print(f"{HelperClass.AnsiColorCodes.Green}{'#' * 50}{HelperClass.AnsiColorCodes.Reset}")
