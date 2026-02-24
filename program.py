@@ -1,4 +1,4 @@
-from Workflows.Workflow import Workflow
+from Workflows.workflow import Workflow
 
 if __name__ == "__main__":
     workflow = Workflow()

@@ -3,11 +3,12 @@ from Flows.receive_a_ticket import ReceiveATicket
 from Flows.helper_class import HelperClass
 from Models.public_swimming_pool import PublicSwimmingPool
 
+
 class Workflow:
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
-    def Run(self):
+    def Run(self) -> None:
         pool = PublicSwimmingPool()
         receive_a_ticket = ReceiveATicket()
         change_terminal_status = ChangeTerminalStatus()
@@ -25,12 +26,12 @@ class Workflow:
             print(f"\nAktuell im Schwimmbad: {pool.current_visitors} / {pool.max_capacity}")
             print(f"Noch verfügbare Plätze: {remaining}")
 
-            desired = HelperClass.GetValidInput("Wie viele Tickets möchten Sie? ", int)
+            desired: int = HelperClass.GetValidInput("Wie viele Tickets möchten Sie? ", int)
             if desired <= 0:
                 print(f"{HelperClass.AnsiColorCodes.Red}Bitte eine positive Anzahl eingeben.{HelperClass.AnsiColorCodes.Reset}")
                 continue
 
-            issued = receive_a_ticket.Run(desired, pool.current_visitors, pool.max_capacity)
+            issued: int = receive_a_ticket.Run(desired, pool.current_visitors, pool.max_capacity)
             pool.current_visitors += issued
             pool.is_ticket_terminal_active = change_terminal_status.Run(
                 pool.current_visitors, pool.max_capacity

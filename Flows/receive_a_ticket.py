@@ -22,3 +22,5 @@ class ReceiveATicket:
 
         print(f"{HelperClass.AnsiColorCodes.Red}Das Schwimmbad ist voll. Es können keine Tickets mehr verkauft werden.{HelperClass.AnsiColorCodes.Reset}")
         return 0
+
+
