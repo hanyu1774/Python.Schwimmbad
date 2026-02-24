@@ -1,4 +1,4 @@
-from Flows.HelperClass import HelperClass
+from Flows.helper_class import HelperClass
 class ChangeTerminalStatus:
     def __init__(self):
         pass

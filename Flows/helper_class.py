@@ -12,9 +12,10 @@ class HelperClass:
         Reset = "\033[0m"
 
     class CliMessages:
+        ExpectedType: type = str;
         InputError_IntegerExpected = f"{AnsiColorCodes.Red}Fehlerhafte Eingabe! Bitte eine ganze Zahl eingeben.{AnsiColorCodes.Reset}"
         InputError_StringIsNullOrEmpty = f"{AnsiColorCodes.Red}Fehlerhafte Eingabe! Die Eingabe darf nicht leer sein.{AnsiColorCodes.Reset}"
-        InputError_ExpectedType = f"{AnsiColorCodes.Red}Fehlerhafte Eingabe! Erwartet wird: {expected_type.__name__}.{AnsiColorCodes.Reset}"
+        InputError_ExpectedType = f"{AnsiColorCodes.Red}Fehlerhafte Eingabe! Erwartet wird: {CliMessages.ExpectedType.__name__}.{AnsiColorCodes.Reset}"
 
     @staticmethod
     def WasCapacityReached(capacity_value: int, number_of_visitors: int) -> bool:
@@ -37,6 +38,7 @@ class HelperClass:
 
     @staticmethod
     def GetValidInput(prompt: str, expected_type: type):
+        CliMessages.ExpectedType = expected_type
         while True:
             user_input = input(prompt).strip()
             if expected_type == int:
